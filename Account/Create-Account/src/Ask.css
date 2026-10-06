@@ -1,0 +1,73 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #e6e6e6;
+}
+
+body{
+  background-color: black;
+}
+
+.hire-container{
+  height:100vh;
+  background:#0d0d0d;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.hire-box{
+  text-align:center;
+  background:#141414;
+  padding:60px;
+  border-radius:12px;
+  box-shadow:0px 0px 20px rgba(0,0,0,0.6);
+}
+
+.title{
+  color:white;
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  color:#9a9a9a;
+  font-size:18px;
+  margin-bottom:40px;
+}
+
+.buttons{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+}
+
+button{
+  padding:15px 30px;
+  font-size:16px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.hire-btn{
+  background:white;
+  color:black;
+}
+
+.hire-btn:hover{
+  background:#e6e6e6;
+}
+
+.work-btn{
+  background:#2a2a2a;
+  color:white;
+  border:1px solid #555;
+}
+
+.work-btn:hover{
+  background:#3a3a3a;
+}

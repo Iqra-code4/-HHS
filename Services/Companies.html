@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>HHS — For Companies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="Companies.css">
+
+</head>
+<body>
+
+    <!-- ══════════════════════════════════════════
+        NAVBAR
+    ══════════════════════════════════════════ -->
+    <nav>
+    <a href="#" class="nav-logo">
+        <div class="nav-logo-mark">HHS</div>
+        <span class="nav-logo-text">Hire and Hired Stars</span>
+    </a>
+
+    <div class="nav-links">
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link active">Companies</a>
+        <a href="#" class="nav-link">Candidates</a>
+        <a href="#" class="nav-link">Services</a>
+        <a href="#" class="nav-btn">Post a Job</a>
+    </div>
+
+    <button class="nav-burger" id="burgerBtn" onclick="toggleMenu()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+    <a href="#" class="nav-link">About</a>
+    <a href="#" class="nav-link active">Companies</a>
+    <a href="#" class="nav-link">Candidates</a>
+    <a href="#" class="nav-link">Services</a>
+    <a href="#" class="nav-link" style="background:var(--s4);color:var(--white);margin-top:6px">Post a Job</a>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+        HERO
+    ══════════════════════════════════════════ -->
+    <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+
+    <div class="hero-content">
+        <div class="hero-eyebrow reveal">
+        <span class="hero-eyebrow-dot"></span>
+        For Companies
+        </div>
+
+        <h1 class="hero-title reveal reveal-delay-1">
+        <span class="line-outline">BUILD YOUR</span><br>
+        <span class="line-accent">DREAM TEAM</span><br>
+        <span class="line-outline">FASTER.</span>
+        </h1>
+
+        <div class="hero-body">
+        <div>
+            <p class="hero-desc reveal reveal-delay-2">
+            We are a tech talent screening and development platform focused on identifying and preparing high-potential students and fresh graduates. 
+            Unlike traditional job portals, we do not just list candidates. We pre-train, assess, and verify them before recommendation.
+            </p>
+            <div class="hero-cta reveal reveal-delay-3">
+            <a href="#companies" class="btn-white">
+                Browse Top Companies
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#services" class="btn-ghost-dark">Our Services</a>
+            </div>
+        </div>
+
+        <div class="hero-stats reveal reveal-delay-3">
+            <div class="hero-stat">
+            <div class="stat-num">4.5K</div>
+            <div class="stat-lbl">Companies</div>
+            </div>
+            <div class="hero-stat">
+            <div class="stat-num">96%</div>
+            <div class="stat-lbl">Retention</div>
+            </div>
+            <div class="hero-stat">
+            <div class="stat-num">13D</div>
+            <div class="stat-lbl">Avg. Hire</div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+        MARQUEE
+    ══════════════════════════════════════════ -->
+    <div class="marquee-section">
+    <div class="marquee-track" id="marqueeTrack">
+        <!-- duplicated for seamless loop via JS -->
+    </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+        SERVICES / ADVANTAGES
+    ══════════════════════════════════════════ -->
+    <section class="services-section" id="services">
+    <div class="section-inner">
+        <div class="services-header">
+        <div>
+            <div class="section-tag reveal">What We Offer</div>
+            <h2 class="section-title reveal reveal-delay-1">ADVANTAGES<br>FOR COMPANIES</h2>
+        </div>
+        <p class="section-desc reveal reveal-delay-2" style="margin-top:0;">
+            Everything you need to attract, assess, and hire top talent — in one unified platform built for modern teams.
+        </p>
+        </div>
+
+        <div class="services-grid">
+
+        <div class="service-card reveal">
+            <span class="service-num">01</span>
+            <div class="service-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="service-title">Candidates</div>
+                <p class="service-desc">Access to pre-screened candidates
+            You don’t need to waste your time, we will offer you the best candidates, So you can interview them.
+            We solve your problem by delivering pre-evaluated candidates.</p>
+            <div class="service-tags">
+                <span class="s-tag">Great Communication</span>
+                <span class="s-tag">Ranked Results</span>
+                <span class="s-tag">Collaboration record</span>
+                <span class="s-tag">Discipline record</span>
+            </div>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+            <span class="service-num">02</span>
+            <div class="service-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="service-title">Talent in Candidates</div>
+            <p class="service-desc">Each candidate has : Technical skill score based on their skills, Project portfolio, Collaboration record, Score of their Communication, explanation and Intelligence.</p>
+            <div class="service-tags">
+            <span class="s-tag">Skilled</span>
+            <span class="s-tag">Guarented</span>
+            <span class="s-tag">Well-prepared</span>
+            </div>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+            <span class="service-num">03</span>
+            <div class="service-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="service-title">Preparation</div>
+            <p class="service-desc">We trained students by giving tasks from us with a salary for them, So they become familiar and more talented for jobs.</p>
+            <div class="service-tags">
+            <span class="s-tag">Job Ready</span>
+            <span class="s-tag">Team Collaboration</span>
+            <span class="s-tag">Project management</span>
+            </div>
+        </div>
+
+        </div>
+    </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+        COMPANIES LIST
+    ══════════════════════════════════════════ -->
+    <section class="companies-section" id="companies">
+    <div class="section-inner">
+        <div class="companies-header">
+        <div>
+            <div class="section-tag reveal">Top Partners</div>
+            <h2 class="section-title reveal reveal-delay-1">WORLD-CLASS<br>COMPANIES</h2>
+        </div>
+        <p class="section-desc reveal reveal-delay-2" style="margin-top:0;text-align:right">
+            Industry leaders who trust HHS to build their teams.
+        </p>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-row reveal">
+        <button class="filter-btn active" onclick="filterCompanies('all', this)">All</button>
+        <button class="filter-btn" onclick="filterCompanies('tech', this)">Tech</button>
+        <button class="filter-btn" onclick="filterCompanies('finance', this)">Finance</button>
+        <button class="filter-btn" onclick="filterCompanies('design', this)">Design &amp; Creative</button>
+        <button class="filter-btn" onclick="filterCompanies('ecommerce', this)">E-Commerce</button>
+        <button class="filter-btn" onclick="filterCompanies('media', this)">Media</button>
+        </div>
+
+        <!-- Company List -->
+        <div class="company-list reveal" id="companyList"></div>
+    </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+        PROCESS
+    ══════════════════════════════════════════ -->
+    <section class="process-section">
+    <div class="section-inner">
+        <div class="section-tag reveal">How It Works</div>
+        <h2 class="section-title reveal reveal-delay-1">4 STEPS TO<br>YOUR NEXT HIRE</h2>
+
+        <div class="process-steps">
+
+        <div class="process-step reveal">
+            <div class="step-num">01</div>
+            <div class="step-title">Create Profile</div>
+            <p class="step-desc">Set up your company profile in minutes. Add culture, benefits, team photos, and what makes you a great company.</p>
+            <span class="step-connector">→</span>
+        </div>
+
+        <div class="process-step reveal reveal-delay-1">
+            <div class="step-num">02</div>
+            <div class="step-title">Post Roles</div>
+            <p class="step-desc">Publish job listings with smart templates. Our AI enriches your descriptions to attract the right talent organically.</p>
+            <span class="step-connector">→</span>
+        </div>
+
+        <div class="process-step reveal reveal-delay-2">
+            <div class="step-num">03</div>
+            <div class="step-title">Review Matches</div>
+            <p class="step-desc">Receive a ranked shortlist of pre-matched candidates within 24 hours. Browse profiles, skills, and portfolio work.</p>
+            <span class="step-connector">→</span>
+        </div>
+
+        <div class="process-step reveal reveal-delay-3">
+            <div class="step-num">04</div>
+            <div class="step-title">Hire &amp; Onboard</div>
+            <p class="step-desc">Interview, extend offers, and onboard — all within the platform. Average time-to-hire is just 18 days.</p>
+        </div>
+
+        </div>
+    </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+        PRICING
+    ══════════════════════════════════════════ -->
+    <section class="pricing-section" id="pricing">
+    <div class="section-inner">
+        <div class="section-tag reveal">Transparent Pricing</div>
+        <h2 class="section-title reveal reveal-delay-1">PLANS FOR EVERY<br>TEAM SIZE</h2>
+
+        <div class="pricing-grid">
+
+        <div class="pricing-card reveal">
+            <div class="pricing-card-top"></div>
+            <div class="pricing-tier">Starter</div>
+            <div class="pricing-price">$0</div>
+            <div class="pricing-period">per month · billed annually</div>
+            <div class="pricing-divider"></div>
+            <ul class="pricing-features">
+            <li class="pricing-feature"><span class="check">✓</span> 3 active job listings</li>
+            <li class="pricing-feature"><span class="check">✓</span> 20 Random candidate views / mo</li>
+            <li class="pricing-feature"><span class="check">✓</span> Basic AI matching</li>
+            <li class="pricing-feature"><span class="check">✓</span> Email support</li>
+            <li class="pricing-feature"><span class="dash">—</span> <span style="color:var(--t4)">Analytics dashboard</span></li>
+            <li class="pricing-feature"><span class="dash">—</span> <span style="color:var(--t4)">Dedicated CSM</span></li>
+            <li class="pricing-feature"><span class="dash">—</span> <span style="color:var(--t4)">API access</span></li>
+            </ul>
+            <button class="pricing-btn pricing-btn-outline">Get Started</button>
+        </div>
+
+        <div class="pricing-card featured reveal reveal-delay-1">
+            <div class="pricing-card-top"></div>
+            <div class="pricing-tier" style="color:var(--white)">
+            Growth
+            <span style="background:var(--white);color:var(--bg);font-size:9px;padding:2px 7px;border-radius:3px;margin-left:8px;font-weight:800;letter-spacing:0.1em">POPULAR</span>
+            </div>
+            <div class="pricing-price">$799</div>
+            <div class="pricing-period">per month · billed annually</div>
+            <div class="pricing-divider"></div>
+            <ul class="pricing-features">
+            <li class="pricing-feature"><span class="check">✓</span> 15 active job listings</li>
+            <li class="pricing-feature"><span class="check">✓</span> Unlimited candidate views</li>
+            <li class="pricing-feature"><span class="check">✓</span> Advanced AI matching</li>
+            <li class="pricing-feature"><span class="check">✓</span> Priority support</li>
+            <li class="pricing-feature"><span class="check">✓</span> Analytics dashboard</li>
+            <li class="pricing-feature"><span class="check">✓</span> Employer branding tools</li>
+            <li class="pricing-feature"><span class="dash">—</span> <span style="color:var(--t4)">Dedicated CSM</span></li>
+            </ul>
+            <button class="pricing-btn pricing-btn-solid">Start Free Trial</button>
+        </div>
+
+        <div class="pricing-card reveal reveal-delay-2">
+            <div class="pricing-card-top"></div>
+            <div class="pricing-tier">Enterprise</div>
+            <div class="pricing-price">Custom</div>
+            <div class="pricing-period">tailored to your team size</div>
+            <div class="pricing-divider"></div>
+            <ul class="pricing-features">
+            <li class="pricing-feature"><span class="check">✓</span> Unlimited listings</li>
+            <li class="pricing-feature"><span class="check">✓</span> Unlimited views &amp; contacts</li>
+            <li class="pricing-feature"><span class="check">✓</span> Custom AI training</li>
+            <li class="pricing-feature"><span class="check">✓</span> 24/7 dedicated support</li>
+            <li class="pricing-feature"><span class="check">✓</span> Advanced analytics &amp; API</li>
+            <li class="pricing-feature"><span class="check">✓</span> Dedicated CSM</li>
+            <li class="pricing-feature"><span class="check">✓</span> SSO &amp; custom integrations</li>
+            </ul>
+            <button class="pricing-btn pricing-btn-outline">Talk to Sales</button>
+        </div>
+
+        </div>
+    </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+        TESTIMONIALS
+    ══════════════════════════════════════════ -->
+    <section class="testimonials-section">
+    <div class="section-inner">
+        <div class="section-tag reveal">Social Proof</div>
+        <h2 class="section-title reveal reveal-delay-1">WHAT COMPANIES<br>SAY ABOUT US</h2>
+
+        <div class="testimonials-grid">
+
+        <div class="testimonial-card reveal">
+            <div class="testimonial-quote">"</div>
+            <p class="testimonial-text">We scaled our engineering team from 8 to 40 people in under 6 months. The quality of candidates was unmatched — every single hire has been exceptional.</p>
+            <div class="testimonial-author">
+            <div class="t-avatar">AK</div>
+            <div>
+                <div class="t-name">Arjun Kapoor</div>
+                <div class="t-role">CTO · Finova Labs</div>
+            </div>
+            <div class="t-stars">★★★★★</div>
+            </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-1">
+            <div class="testimonial-quote">"</div>
+            <p class="testimonial-text">Hire and Hired Stars cut our average time-to-hire from 52 days down to 19. The AI matching is genuinely impressive — it just works.</p>
+            <div class="testimonial-author">
+            <div class="t-avatar">SL</div>
+            <div>
+                <div class="t-name">Sophie Laurent</div>
+                <div class="t-role">Head of People · Nuvola</div>
+            </div>
+            <div class="t-stars">★★★★★</div>
+            </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-2">
+            <div class="testimonial-quote">"</div>
+            <p class="testimonial-text">The employer branding tools helped us tell our story better. Applications went up 3x after we relaunched our company profile through HHS.</p>
+            <div class="testimonial-author">
+            <div class="t-avatar">MW</div>
+            <div>
+                <div class="t-name">Marcus Webb</div>
+                <div class="t-role">Talent Lead · Orbit Design</div>
+            </div>
+            <div class="t-stars">★★★★★</div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+        CTA BANNER
+    ══════════════════════════════════════════ -->
+    <section class="cta-section">
+    <div class="cta-inner reveal">
+        <div>
+        <h2 class="cta-title">READY TO BUILD<br>YOUR DREAM TEAM?</h2>
+        <p class="cta-sub">Join 8,500+ companies already hiring smarter. Start your free trial today — no credit card required.</p>
+        </div>
+        <div class="cta-actions">
+        <a href="#" class="btn-white">
+            Start Free Trial
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#" class="btn-ghost-dark">Talk to Sales</a>
+        </div>
+    </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+        FOOTER
+    ══════════════════════════════════════════ -->
+    <footer>
+    <div class="footer-inner">
+        <div style="display:flex;align-items:center;gap:10px;">
+        <div class="nav-logo-mark" style="width:30px;height:30px;font-size:13px;">HHS</div>
+        <span class="footer-copy" style="color:var(--t3);">© 2026 Hire and Hired Stars. All rights reserved.</span>
+        </div>
+        <div class="footer-links">
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Terms</a>
+        <a href="#" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">Blog</a>
+        </div>
+    </div>
+    </footer>
+
+    <script src="Companies.js"></script>
+</body>
+</html>

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TalentBridge — Focus Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="focus.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">
+    <div class="logo-box">T</div>
+    <span class="logo-name">TalentBridge</span>
+  </div>
+  <div class="tb-sep"></div>
+  <span class="studio-lbl">Focus Studio</span>
+
+  <div class="main-tabs">
+    <button class="mtab active" onclick="showTab('focus',this)">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      <span>Focus</span>
+    </button>
+    <button class="mtab" onclick="showTab('music',this)">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+      <span>Music</span>
+    </button>
+    <button class="mtab" onclick="showTab('whiteboard',this)">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m9 9 2 2 4-4"/></svg>
+      <span>Board</span>
+    </button>
+  </div>
+
+  <div class="topbar-r">
+    <div class="live-badge" id="liveBadge" style="display:none"><span class="live-dot"></span>Session On</div>
+    <div class="clock" id="clock">--:--:--</div>
+    <button class="burger" onclick="document.getElementById('sidebar').classList.toggle('open')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</div>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+
+    <!-- POMODORO -->
+    <div class="sb-section">
+      <div class="sb-head">Pomodoro Timer</div>
+      <div class="pomo-wrap">
+        <div class="pomo-modes">
+          <button class="pm active" onclick="pomoMode(25,'FOCUS',this)">Focus</button>
+          <button class="pm" onclick="pomoMode(5,'SHORT BREAK',this)">Short</button>
+          <button class="pm" onclick="pomoMode(15,'LONG BREAK',this)">Long</button>
+        </div>
+        <div class="ring">
+          <svg class="r-svg" viewBox="0 0 128 128">
+            <circle class="r-track" cx="64" cy="64" r="56"/>
+            <circle class="r-fill" id="rFill" cx="64" cy="64" r="56"/>
+          </svg>
+          <div class="r-center">
+            <div class="r-time" id="rTime">25:00</div>
+            <div class="r-lbl" id="rLbl">FOCUS</div>
+          </div>
+        </div>
+        <div class="pomo-ctrl">
+          <button class="pc" onclick="pomoReset()" title="Reset">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          </button>
+          <button class="pc big" id="pomoPlay" onclick="pomoToggle()">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" id="pomoIco"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+          <button class="pc" onclick="pomoSkip()" title="Skip">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+          </button>
+        </div>
+        <div class="pips">
+          <span class="pip-lbl">Done:</span>
+          <div class="pip" id="p1"></div><div class="pip" id="p2"></div>
+          <div class="pip" id="p3"></div><div class="pip" id="p4"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AMBIENCE -->
+    <div class="sb-section">
+      <div class="sb-head">Ambience Sounds</div>
+      <div class="amb-wrap">
+        <div class="amb-row"><span class="amb-name">🌧️ Rain</span><div class="tog" onclick="ambToggle(this,'rain')"><div class="tog-thumb"></div></div></div>
+        <div class="amb-row"><span class="amb-name">🔥 Fireplace</span><div class="tog" onclick="ambToggle(this,'fire')"><div class="tog-thumb"></div></div></div>
+        <div class="amb-row"><span class="amb-name">☕ Café</span><div class="tog" onclick="ambToggle(this,'cafe')"><div class="tog-thumb"></div></div></div>
+        <div class="amb-row"><span class="amb-name">🌊 Ocean</span><div class="tog" onclick="ambToggle(this,'ocean')"><div class="tog-thumb"></div></div></div>
+      </div>
+    </div>
+
+    <!-- TO-DO -->
+    <div class="sb-section">
+      <div class="sb-head">To-Do List</div>
+      <div class="todo-hd">
+        <div class="todo-row">
+          <input class="todo-in" id="tdIn" placeholder="Add a task…" onkeydown="if(event.key==='Enter')tdAdd()"/>
+          <button class="todo-btn" onclick="tdAdd()">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="todo-list" id="tdList"></div>
+    <div class="todo-ft">
+      <span class="todo-ct" id="tdCt">0 / 0 done</span>
+      <button class="todo-cl" onclick="tdClear()">Clear done</button>
+    </div>
+
+  </div><!-- /sidebar -->
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- FOCUS PANE -->
+    <div class="pane active" id="pane-focus">
+      <div class="dash">
+
+        <div class="stat-row">
+          <div class="sbox"><div class="sval" id="stH">0.0</div><div class="slbl">Hours Today</div><span class="sbadge bg" id="stHB">+0h</span></div>
+          <div class="sbox"><div class="sval" id="stS">0</div><div class="slbl">Sessions Today</div></div>
+          <div class="sbox"><div class="sval" id="stSt">0</div><div class="slbl">Day Streak 🔥</div></div>
+          <div class="sbox"><div class="sval" id="stT">0%</div><div class="slbl">Tasks Done</div><span class="sbadge by" id="stTB"></span></div>
+        </div>
+
+        <!-- 30-DAY STREAK -->
+        <div class="streak-card">
+          <div class="streak-top">
+            <div>
+              <div class="s-title">30-Day Consistency Challenge</div>
+              <div class="s-sub">Check in every day · Complete all 30 to unlock your prize 🏆</div>
+            </div>
+            <span class="prize-chip">🏆 Win 3 Months Pro Free</span>
+          </div>
+          <div class="days-grid" id="daysGrid"></div>
+          <div class="s-prog"><div class="s-fill" id="sFill" style="width:0%"></div></div>
+          <div class="streak-bot">
+            <div class="s-info"><b id="doneN">0</b> of 30 complete · <b id="leftN">30</b> to go</div>
+            <button class="checkin" id="checkinBtn" onclick="doCheckin()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Check In Today
+            </button>
+          </div>
+        </div>
+
+        <!-- LOG -->
+        <div class="log-card">
+          <div class="ct">Today's Study Log</div>
+          <textarea class="log-ta" id="logTa" placeholder="What did you study today? Share your wins, struggles, and goals…" rows="4"></textarea>
+          <button class="log-sv" onclick="saveLog()">Save Log →</button>
+        </div>
+
+        <!-- QUOTE -->
+        <div class="qt-card">
+          <div class="qm">"</div>
+          <button class="qref" onclick="nextQ()" title="New quote">↻</button>
+          <p class="qt" id="qtxt"></p>
+          <p class="qa" id="qauth"></p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MUSIC PANE -->
+    <div class="pane" id="pane-music">
+      <div class="music-pane">
+        <div class="player">
+          <div class="art" id="artWrap">
+            <div class="art-grid"></div>
+            <div class="art-ico">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            </div>
+          </div>
+          <div class="trk-name" id="tName">Lo-Fi Study Beats</div>
+          <div class="trk-artist" id="tArtist">ChillHop Records · Lo-Fi</div>
+          <div class="seek-outer">
+            <div class="seek-bar" id="seekBar" onclick="mSeek(event)">
+              <div class="seek-prog" id="sProg" style="width:0%"></div>
+              <div class="seek-dot" id="sDot" style="left:0%"></div>
+            </div>
+            <div class="seek-tt"><span id="sCur">0:00</span><span id="sTot">3:45</span></div>
+          </div>
+          <div class="mctrl">
+            <button class="mb" onclick="mShuffle()" title="Shuffle">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+            </button>
+            <button class="mb" onclick="mPrev()" title="Prev">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg>
+            </button>
+            <button class="mb big" id="mPlayBtn" onclick="mToggle()">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" id="mIco"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+            <button class="mb" onclick="mNext()" title="Next">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+            </button>
+            <button class="mb" id="loopBtn" onclick="mLoop()" title="Loop">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            </button>
+          </div>
+          <div class="vol-row">
+            <span class="vol-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></span>
+            <input type="range" class="vol-sl" min="0" max="100" value="70" id="volR" oninput="document.getElementById('volN').textContent=this.value+'%'"/>
+            <span class="vol-num" id="volN">70%</span>
+          </div>
+        </div>
+        <div class="plist">
+          <div class="pl-hd"><span>Study Playlist — 8 Tracks</span><span id="plTotal"></span></div>
+          <div id="pl"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHITEBOARD PANE -->
+    <div class="pane" id="pane-whiteboard">
+      <div class="wb-pane">
+        <div class="wb-bar">
+          <span class="wbl">Tool</span>
+          <button class="wib active" id="wtool-pen" title="Pen" onclick="wbTool('pen',this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></button>
+          <button class="wib" id="wtool-marker" title="Marker" onclick="wbTool('marker',this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 11-6 6v3h3l6-6"/><path d="m22 2-3 3-3-3 3-3z"/><path d="m19 9-7.5-7.5"/></svg></button>
+          <button class="wib" id="wtool-eraser" title="Eraser" onclick="wbTool('eraser',this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg></button>
+          <button class="wib" id="wtool-text" title="Text" onclick="wbTool('text',this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></button>
+          <button class="wib" id="wtool-line" title="Line" onclick="wbTool('line',this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="19" x2="19" y2="5"/></svg></button>
+          <button class="wib" id="wtool-rect" title="Rectangle" onclick="wbTool('rect',this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></button>
+          <button class="wib" id="wtool-ellipse" title="Ellipse" onclick="wbTool('ellipse',this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="12" rx="10" ry="7"/></svg></button>
+          <button class="wib" id="wtool-arrow" title="Arrow" onclick="wbTool('arrow',this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="19" x2="19" y2="5"/><polyline points="19 12 19 5 12 5"/></svg></button>
+          <div class="wb-sep"></div>
+          <span class="wbl">Size</span>
+          <button class="wsz active" onclick="wbSize(2,this)">S</button>
+          <button class="wsz" onclick="wbSize(5,this)">M</button>
+          <button class="wsz" onclick="wbSize(10,this)">L</button>
+          <button class="wsz" onclick="wbSize(20,this)">XL</button>
+          <div class="wb-sep"></div>
+          <span class="wbl">Color</span>
+          <div class="cdot active" style="background:#fff" onclick="wbColor('#fff',this)" title="White"></div>
+          <div class="cdot" style="background:#ccc" onclick="wbColor('#ccc',this)" title="Silver"></div>
+          <div class="cdot" style="background:#3ddc84" onclick="wbColor('#3ddc84',this)" title="Green"></div>
+          <div class="cdot" style="background:#f5c542" onclick="wbColor('#f5c542',this)" title="Yellow"></div>
+          <div class="cdot" style="background:#ff4545" onclick="wbColor('#ff4545',this)" title="Red"></div>
+          <div class="cdot" style="background:#60a5fa" onclick="wbColor('#60a5fa',this)" title="Blue"></div>
+          <div class="cdot" style="background:#c084fc" onclick="wbColor('#c084fc',this)" title="Purple"></div>
+          <div class="wb-sep"></div>
+          <button class="wib" title="Undo" onclick="wbUndo()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7v6h6"/><path d="M3 13A9 9 0 1 0 6 6.7L3 10"/></svg></button>
+          <button class="wib" title="Redo" onclick="wbRedo()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 7v6h-6"/><path d="M21 13A9 9 0 1 1 18 6.7L21 10"/></svg></button>
+          <button class="wib" title="Clear" onclick="wbClear()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M9 6V4h6v2"/></svg></button>
+          <button class="wib" title="Download" onclick="wbDL()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+        </div>
+        <div class="wb-area" id="wbArea">
+          <canvas id="wbCanvas"></canvas>
+          <textarea id="wbTxt" rows="1" onkeydown="wbTxtKey(event)"></textarea>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<!-- PRIZE MODAL -->
+<div class="modal-bg" id="prizeModal" style="display:none">
+  <div class="modal">
+    <div class="confetti-wrap" id="confettiWrap"></div>
+    <span class="m-emoji">🏆</span>
+    <div class="m-title">YOU DID IT!</div>
+    <p class="m-body">You studied consistently for <strong style="color:var(--white)">30 days straight</strong>. That is extraordinary discipline.<br><br>Your prize: <strong style="color:var(--yellow)">🎁 3 Months of TalentBridge Pro — FREE.</strong><br><br>A redemption code has been sent to your account. Keep going — you are unstoppable!</p>
+    <button class="m-cta" onclick="document.getElementById('prizeModal').style.display='none'">Claim My Prize 🎉</button>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════
+   HELPERS
+══════════════════════════════════════════ */
+const G = id => document.getElementById(id);
+const ld = (k,d) => { try{return JSON.parse(localStorage.getItem(k))??d;}catch{return d;} };
+const sv = (k,v) => localStorage.setItem(k, JSON.stringify(v));
+const pad = n => String(n).padStart(2,'0');
+const toDS = () => { const d=new Date(); return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`; };
+const fmtS = s => `${Math.floor(s/60)}:${pad(s%60)}`;
+
+/* clock */
+setInterval(()=>{const n=new Date();G('clock').textContent=`${pad(n.getHours())}:${pad(n.getMinutes())}:${pad(n.getSeconds())}`;},1000);
+(()=>{const n=new Date();G('clock').textContent=`${pad(n.getHours())}:${pad(n.getMinutes())}:${pad(n.getSeconds())}`;})();
+
+/* tab switch */
+function showTab(name,btn){
+  document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  G(`pane-${name}`).classList.add('active');
+  if(name==='whiteboard') setTimeout(()=>{if(!WB.ctx)wbInit();else wbResize();},60);
+}
+
+/* ══════════════════════════════════════════
+   POMODORO
+══════════════════════════════════════════ */
+const CIRC = 2*Math.PI*56; // ~351.9
+const P = {
+  run:false, secs:25*60, total:25*60, label:'FOCUS',
+  iv:null, done:ld('pomo_done',0), totalSecs:ld('pomo_tsecs',0),
+};
+
+function pomoRing(){
+  const pct = P.secs/P.total;
+  const el = G('rFill');
+  el.style.strokeDasharray = CIRC;
+  el.style.strokeDashoffset = CIRC*(1-pct);
+  el.style.stroke = pct>.5?'var(--white)':pct>.25?'var(--yellow)':'var(--red)';
+  G('rTime').textContent = `${pad(Math.floor(P.secs/60))}:${pad(P.secs%60)}`;
+}
+
+function pomoMode(mins,lbl,btn){
+  if(P.run) return;
+  document.querySelectorAll('.pm').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  P.secs=P.total=mins*60; P.label=lbl;
+  G('rLbl').textContent=lbl; pomoRing();
+}
+
+function pomoToggle(){
+  if(P.run){
+    clearInterval(P.iv); P.run=false;
+    G('pomoIco').innerHTML='<polygon points="5 3 19 12 5 21 5 3"/>';
+    G('liveBadge').style.display='none';
+  } else {
+    P.run=true;
+    G('pomoIco').innerHTML='<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+    G('liveBadge').style.display='flex';
+    P.iv=setInterval(()=>{
+      P.secs--; P.totalSecs++;
+      sv('pomo_tsecs',P.totalSecs);
+      pomoRing(); refreshStats();
+      if(P.secs<=0) pomoComplete();
+    },1000);
+  }
+}
+
+function pomoComplete(){
+  clearInterval(P.iv); P.run=false;
+  G('pomoIco').innerHTML='<polygon points="5 3 19 12 5 21 5 3"/>';
+  G('liveBadge').style.display='none';
+  if(P.label==='FOCUS'){
+    P.done++; sv('pomo_done',P.done); updatePips(); beep();
+    const modeI = P.done%4===0?2:1;
+    const modes = document.querySelectorAll('.pm');
+    modes.forEach((b,i)=>b.classList.toggle('active',i===modeI));
+    const [mins,lbl] = modeI===2?[15,'LONG BREAK']:[5,'SHORT BREAK'];
+    P.secs=P.total=mins*60; P.label=lbl; G('rLbl').textContent=lbl;
+  } else {
+    document.querySelectorAll('.pm').forEach((b,i)=>b.classList.toggle('active',i===0));
+    P.secs=P.total=25*60; P.label='FOCUS'; G('rLbl').textContent='FOCUS';
+  }
+  pomoRing();
+}
+
+function pomoReset(){
+  clearInterval(P.iv); P.run=false;
+  G('pomoIco').innerHTML='<polygon points="5 3 19 12 5 21 5 3"/>';
+  G('liveBadge').style.display='none';
+  const map={'FOCUS':25*60,'SHORT BREAK':5*60,'LONG BREAK':15*60};
+  P.secs=P.total=map[P.label]||25*60; pomoRing();
+}
+
+function pomoSkip(){ pomoComplete(); }
+
+function updatePips(){
+  const n = P.done%4||(P.done?4:0);
+  for(let i=1;i<=4;i++) G(`p${i}`).classList.toggle('done',i<=n);
+}
+
+function beep(){
+  try{
+    const c=new(window.AudioContext||window.webkitAudioContext)();
+    const o=c.createOscillator(), g=c.createGain();
+    o.connect(g); g.connect(c.destination);
+    o.frequency.value=880; o.type='sine';
+    g.gain.setValueAtTime(.28,c.currentTime);
+    g.gain.exponentialRampToValueAtTime(.001,c.currentTime+.9);
+    o.start(); o.stop(c.currentTime+.9);
+  }catch(e){}
+}
+
+pomoRing(); updatePips();
+
+/* ══════════════════════════════════════════
+   AMBIENCE
+══════════════════════════════════════════ */
+const ambCtx={};
+function ambToggle(el,type){
+  el.classList.toggle('on');
+  if(el.classList.contains('on')){
+    try{
+      const c=new(window.AudioContext||window.webkitAudioContext)();
+      const proc=c.createScriptProcessor(4096,1,1);
+      const gain=c.createGain(), filt=c.createBiquadFilter();
+      filt.type='lowpass';
+      filt.frequency.value={rain:280,fire:160,cafe:550,ocean:110}[type]||200;
+      gain.gain.value=.065;
+      proc.onaudioprocess=e=>{const o=e.outputBuffer.getChannelData(0);for(let i=0;i<4096;i++)o[i]=Math.random()*2-1;};
+      proc.connect(filt); filt.connect(gain); gain.connect(c.destination);
+      ambCtx[type]={c,proc};
+    }catch(e){}
+  } else {
+    if(ambCtx[type]){try{ambCtx[type].c.close();}catch(e){} delete ambCtx[type];}
+  }
+}
+
+/* ══════════════════════════════════════════
+   TO-DO
+══════════════════════════════════════════ */
+let todos = ld('tb_todos',[]);
+
+function renderTodos(){
+  const list=G('tdList');
+  if(!todos.length){
+    list.innerHTML='<div style="padding:12px 14px;font-size:11px;color:var(--t4);text-align:center">No tasks yet — add one!</div>';
+  } else {
+    list.innerHTML=todos.map((t,i)=>`
+      <div class="ti${t.done?' done':''}">
+        <div class="ti-cb" onclick="tdToggle(${i})"><span class="ti-chk">✓</span></div>
+        <span class="ti-txt" onclick="tdToggle(${i})">${t.text}</span>
+        <button class="ti-rm" onclick="tdDel(${i})">×</button>
+      </div>`).join('');
+  }
+  const done=todos.filter(t=>t.done).length;
+  G('tdCt').textContent=`${done} / ${todos.length} done`;
+  sv('tb_todos',todos); refreshStats();
+}
+
+function tdAdd(){
+  const inp=G('tdIn'), txt=inp.value.trim();
+  if(!txt) return;
+  todos.unshift({text:txt,done:false}); inp.value=''; renderTodos();
+}
+function tdToggle(i){todos[i].done=!todos[i].done; renderTodos();}
+function tdDel(i){todos.splice(i,1); renderTodos();}
+function tdClear(){todos=todos.filter(t=>!t.done); renderTodos();}
+renderTodos();
+
+/* ══════════════════════════════════════════
+   STATS
+══════════════════════════════════════════ */
+function refreshStats(){
+  const h=(P.totalSecs/3600).toFixed(1);
+  G('stH').textContent=h; G('stHB').textContent=`+${h}h`;
+  G('stS').textContent=P.done;
+  G('stSt').textContent=calcStreak();
+  const done=todos.filter(t=>t.done).length, total=todos.length;
+  const pct=total?Math.round(done/total*100):0;
+  G('stT').textContent=pct+'%';
+  G('stTB').textContent=total?`${done}/${total}`:'';
+}
+
+/* ══════════════════════════════════════════
+   30-DAY STREAK
+══════════════════════════════════════════ */
+let streak = ld('tb_streak',[]);
+
+function calcStreak(){
+  let cur=0, d=new Date();
+  while(true){
+    const ds=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+    if(streak.includes(ds)){cur++; d.setDate(d.getDate()-1);}
+    else break;
+  }
+  return cur;
+}
+
+function buildStreak(){
+  const grid=G('daysGrid'), today=toDS();
+  const base=new Date(); base.setDate(base.getDate()-29);
+  grid.innerHTML='';
+  let done=0;
+  for(let i=0;i<30;i++){
+    const d=new Date(base); d.setDate(d.getDate()+i);
+    const ds=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+    const isToday=ds===today, isDone=streak.includes(ds), missed=!isDone&&ds<today;
+    if(isDone) done++;
+    const el=document.createElement('div');
+    el.className='sd'+(isDone?' done':'')+(isToday?' today':'')+(missed?' missed':'');
+    el.innerHTML=`<span class="sd-n">${i+1}</span><span class="sd-c">✓</span>`;
+    el.title=`Day ${i+1}${isDone?' ✓':''}${isToday?' (Today)':''}`;
+    grid.appendChild(el);
+  }
+  const pct=Math.round(done/30*100);
+  G('sFill').style.width=pct+'%';
+  G('doneN').textContent=done; G('leftN').textContent=Math.max(0,30-done);
+  const btn=G('checkinBtn'), has=streak.includes(today);
+  btn.disabled=has;
+  btn.innerHTML=has?'✓ Checked In!':'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Check In Today';
+  refreshStats();
+}
+
+function doCheckin(){
+  const today=toDS();
+  if(streak.includes(today)) return;
+  streak.push(today); sv('tb_streak',streak); buildStreak();
+  // Check 30-day prize
+  const base=new Date(); base.setDate(base.getDate()-29);
+  let all=true;
+  for(let i=0;i<30;i++){
+    const d=new Date(base); d.setDate(d.getDate()+i);
+    const ds=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+    if(!streak.includes(ds)){all=false;break;}
+  }
+  if(all) showPrize();
+}
+
+buildStreak(); refreshStats();
+
+/* ══════════════════════════════════════════
+   LOG & QUOTE
+══════════════════════════════════════════ */
+G('logTa').value=ld(`tb_log_${toDS()}`,'');
+function saveLog(){
+  sv(`tb_log_${toDS()}`,G('logTa').value);
+  const b=document.querySelector('.log-sv');
+  b.textContent='Saved ✓'; b.style.color='var(--green)';
+  setTimeout(()=>{b.textContent='Save Log →';b.style.color='';},1600);
+}
+
+const QS=[
+  ["The secret of getting ahead is getting started.","Mark Twain"],
+  ["It does not matter how slowly you go as long as you do not stop.","Confucius"],
+  ["Success is the sum of small efforts, repeated day in and day out.","Robert Collier"],
+  ["Discipline is the bridge between goals and accomplishment.","Jim Rohn"],
+  ["Don't watch the clock; do what it does. Keep going.","Sam Levenson"],
+  ["The expert in anything was once a beginner.","Helen Hayes"],
+  ["Hard work beats talent when talent does not work hard.","Tim Notke"],
+  ["Push yourself, because no one else is going to do it for you.","Unknown"],
+  ["Great things never came from comfort zones.","Unknown"],
+  ["You do not have to be great to start, but you have to start to be great.","Zig Ziglar"],
+  ["One day or day one. You decide.","Paulo Coelho"],
+  ["The pain you feel today will be the strength you feel tomorrow.","Unknown"],
+  ["Your future is created by what you do today, not tomorrow.","Robert Kiyosaki"],
+  ["Success usually comes to those who are too busy to be looking for it.","Henry David Thoreau"],
+];
+let qi=Math.floor(Math.random()*QS.length);
+function showQ(){G('qtxt').textContent=QS[qi][0]; G('qauth').textContent=`— ${QS[qi][1]}`;}
+function nextQ(){qi=(qi+1)%QS.length; showQ();}
+showQ();
+
+/* ══════════════════════════════════════════
+   PRIZE MODAL
+══════════════════════════════════════════ */
+function showPrize(){
+  G('prizeModal').style.display='flex';
+  const w=G('confettiWrap'); w.innerHTML='';
+  const cols=['#fff','#f5c542','#3ddc84','#aaa','#60a5fa','#f5f5f5'];
+  for(let i=0;i<52;i++){
+    const p=document.createElement('div'); p.className='cp';
+    p.style.cssText=`left:${Math.random()*100}%;background:${cols[i%cols.length]};animation-duration:${1.3+Math.random()*2}s;animation-delay:${Math.random()}s;`;
+    w.appendChild(p);
+  }
+}
+
+/* ══════════════════════════════════════════
+   MUSIC PLAYER
+══════════════════════════════════════════ */
+const TRX=[
+  {name:"Lo-Fi Study Beats",    artist:"ChillHop Records",  genre:"Lo-Fi",     dur:"3:45",secs:225},
+  {name:"Deep Focus Flow",       artist:"Ambient Works",     genre:"Ambient",   dur:"4:12",secs:252},
+  {name:"Midnight Study Session",artist:"Study Waves",       genre:"Chill",     dur:"3:58",secs:238},
+  {name:"Calm Piano Breeze",     artist:"Piano Collective",  genre:"Classical", dur:"5:01",secs:301},
+  {name:"Forest Morning",        artist:"Nature Sounds",     genre:"Nature",    dur:"6:20",secs:380},
+  {name:"Jazz Café Hours",       artist:"Smooth Jazz Lab",   genre:"Jazz",      dur:"4:33",secs:273},
+  {name:"Alpha Waves Focus",     artist:"BrainWave Studio",  genre:"Binaural",  dur:"8:00",secs:480},
+  {name:"Rainy Window",          artist:"Chill Atmosphere",  genre:"Ambient",   dur:"5:15",secs:315},
+];
+const M={play:false,idx:0,prog:0,loop:false,iv:null};
+
+function mBuildPL(){
+  G('pl').innerHTML=TRX.map((t,i)=>`
+    <div class="pl-row${i===M.idx?' active':''}" onclick="mSelect(${i})">
+      <div class="pl-n">${i+1}</div>
+      <div class="pl-eq"><div class="eqb" style="animation-duration:.36s;animation-delay:0s"></div><div class="eqb" style="animation-duration:.55s;animation-delay:.1s"></div><div class="eqb" style="animation-duration:.44s;animation-delay:.2s"></div></div>
+      <div class="pl-info"><div class="pl-nm">${t.name}</div><div class="pl-g">${t.genre}</div></div>
+      <div class="pl-d">${t.dur}</div>
+    </div>`).join('');
+  const tot=TRX.reduce((a,t)=>a+t.secs,0);
+  G('plTotal').textContent=`${Math.floor(tot/60)}m`;
+}
+
+function mRefresh(){
+  const t=TRX[M.idx];
+  G('tName').textContent=t.name;
+  G('tArtist').textContent=`${t.artist} · ${t.genre}`;
+  G('sTot').textContent=t.dur;
+}
+
+function mUpdSeek(){
+  const pct=(M.prog/TRX[M.idx].secs*100).toFixed(2);
+  G('sProg').style.width=pct+'%';
+  G('sDot').style.left=pct+'%';
+  G('sCur').textContent=fmtS(M.prog);
+}
+
+function mToggle(){
+  if(M.play){
+    clearInterval(M.iv); M.play=false;
+    G('mIco').innerHTML='<polygon points="5 3 19 12 5 21 5 3"/>';
+    G('artWrap').classList.remove('playing');
+  } else {
+    M.play=true;
+    G('mIco').innerHTML='<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+    G('artWrap').classList.add('playing');
+    M.iv=setInterval(()=>{
+      M.prog++;
+      if(M.prog>=TRX[M.idx].secs){if(M.loop)M.prog=0;else{mNext();return;}}
+      mUpdSeek();
+    },1000);
+  }
+}
+
+function mSelect(i){
+  clearInterval(M.iv); const was=M.play;
+  M.idx=i; M.prog=0; M.play=false;
+  mRefresh(); mBuildPL(); mUpdSeek();
+  if(was) mToggle();
+}
+
+function mNext(){
+  clearInterval(M.iv); const was=M.play; M.play=false;
+  M.idx=(M.idx+1)%TRX.length; M.prog=0;
+  mRefresh(); mBuildPL(); mUpdSeek();
+  if(was) mToggle();
+}
+
+function mPrev(){
+  clearInterval(M.iv); const was=M.play; M.play=false;
+  if(M.prog>4){M.prog=0; mUpdSeek();}
+  else{M.idx=(M.idx-1+TRX.length)%TRX.length; M.prog=0; mRefresh(); mBuildPL(); mUpdSeek();}
+  if(was) mToggle();
+}
+
+function mShuffle(){
+  clearInterval(M.iv); const was=M.play; M.play=false;
+  let r; do{r=Math.floor(Math.random()*TRX.length);}while(r===M.idx);
+  M.idx=r; M.prog=0; mRefresh(); mBuildPL(); mUpdSeek();
+  if(was) mToggle();
+}
+
+function mLoop(){M.loop=!M.loop; G('loopBtn').classList.toggle('on',M.loop);}
+
+function mSeek(e){
+  const r=G('seekBar').getBoundingClientRect();
+  const pct=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+  M.prog=Math.floor(pct*TRX[M.idx].secs); mUpdSeek();
+}
+
+mBuildPL(); mRefresh(); mUpdSeek();
+
+/* ══════════════════════════════════════════
+   WHITEBOARD
+══════════════════════════════════════════ */
+const WB={
+  ctx:null, cvs:null,
+  tool:'pen', color:'#fff', sz:2,
+  drawing:false, sx:0, sy:0, snap:null,
+  hist:[], fut:[],
+};
+
+function wbInit(){
+  WB.cvs=G('wbCanvas'); WB.ctx=WB.cvs.getContext('2d');
+  wbResize();
+  WB.ctx.fillStyle='#0c0c0c'; WB.ctx.fillRect(0,0,WB.cvs.width,WB.cvs.height);
+  wbSaveH();
+  WB.cvs.addEventListener('mousedown',wbDown);
+  WB.cvs.addEventListener('mousemove',wbMove);
+  WB.cvs.addEventListener('mouseup',wbUp);
+  WB.cvs.addEventListener('mouseleave',wbUp);
+  WB.cvs.addEventListener('touchstart',e=>{e.preventDefault();wbDown(e.touches[0]);},{passive:false});
+  WB.cvs.addEventListener('touchmove',e=>{e.preventDefault();wbMove(e.touches[0]);},{passive:false});
+  WB.cvs.addEventListener('touchend',wbUp);
+}
+
+function wbResize(){
+  if(!WB.cvs) return;
+  const a=G('wbArea');
+  const snap=WB.ctx?WB.ctx.getImageData(0,0,WB.cvs.width,WB.cvs.height):null;
+  WB.cvs.width=a.offsetWidth; WB.cvs.height=a.offsetHeight;
+  WB.ctx.fillStyle='#0c0c0c'; WB.ctx.fillRect(0,0,WB.cvs.width,WB.cvs.height);
+  if(snap) WB.ctx.putImageData(snap,0,0);
+}
+window.addEventListener('resize',wbResize);
+
+function wbPos(e){
+  const r=WB.cvs.getBoundingClientRect();
+  return{x:(e.clientX||e.pageX)-r.left,y:(e.clientY||e.pageY)-r.top};
+}
+
+function wbDown(e){
+  const p=wbPos(e);
+  if(WB.tool==='text'){
+    const n=G('wbTxt');
+    n.style.display='block'; n.style.left=p.x+'px'; n.style.top=p.y+'px';
+    n.style.color=WB.color; n.style.fontSize=(WB.sz*5+10)+'px';
+    n.value=''; n.focus(); return;
+  }
+  WB.drawing=true; WB.sx=p.x; WB.sy=p.y;
+  WB.snap=WB.ctx.getImageData(0,0,WB.cvs.width,WB.cvs.height);
+  WB.ctx.strokeStyle=WB.tool==='eraser'?'#0c0c0c':WB.color;
+  WB.ctx.lineWidth=WB.tool==='eraser'?WB.sz*5:WB.sz;
+  WB.ctx.lineCap='round'; WB.ctx.lineJoin='round';
+  WB.ctx.globalAlpha=WB.tool==='marker'?.42:1;
+  if(WB.tool==='pen'||WB.tool==='marker'||WB.tool==='eraser'){
+    WB.ctx.beginPath(); WB.ctx.moveTo(p.x,p.y);
+  }
+}
+
+function wbMove(e){
+  if(!WB.drawing) return;
+  const p=wbPos(e);
+  if(WB.tool==='pen'||WB.tool==='marker'||WB.tool==='eraser'){
+    WB.ctx.lineTo(p.x,p.y); WB.ctx.stroke();
+  } else {
+    WB.ctx.putImageData(WB.snap,0,0);
+    WB.ctx.globalAlpha=1; WB.ctx.strokeStyle=WB.color; WB.ctx.lineWidth=WB.sz;
+    WB.ctx.lineCap='round'; WB.ctx.beginPath();
+    if(WB.tool==='line'){
+      WB.ctx.moveTo(WB.sx,WB.sy); WB.ctx.lineTo(p.x,p.y);
+    } else if(WB.tool==='rect'){
+      WB.ctx.rect(WB.sx,WB.sy,p.x-WB.sx,p.y-WB.sy);
+    } else if(WB.tool==='ellipse'){
+      const rx=Math.abs(p.x-WB.sx)/2,ry=Math.abs(p.y-WB.sy)/2;
+      WB.ctx.ellipse(WB.sx+(p.x-WB.sx)/2,WB.sy+(p.y-WB.sy)/2,rx||1,ry||1,0,0,2*Math.PI);
+    } else if(WB.tool==='arrow'){
+      const dx=p.x-WB.sx,dy=p.y-WB.sy,ang=Math.atan2(dy,dx),hw=12;
+      WB.ctx.moveTo(WB.sx,WB.sy); WB.ctx.lineTo(p.x,p.y);
+      WB.ctx.moveTo(p.x,p.y); WB.ctx.lineTo(p.x-hw*Math.cos(ang-.4),p.y-hw*Math.sin(ang-.4));
+      WB.ctx.moveTo(p.x,p.y); WB.ctx.lineTo(p.x-hw*Math.cos(ang+.4),p.y-hw*Math.sin(ang+.4));
+    }
+    WB.ctx.stroke();
+  }
+}
+
+function wbUp(){
+  if(!WB.drawing) return;
+  WB.drawing=false; WB.ctx.globalAlpha=1; wbSaveH();
+}
+
+function wbTxtKey(e){
+  if((e.key==='Enter'&&!e.shiftKey)||e.key==='Escape'){
+    const n=G('wbTxt');
+    if(n.value.trim()){
+      const sz=WB.sz*5+10;
+      WB.ctx.font=`${sz}px 'Outfit',sans-serif`;
+      WB.ctx.fillStyle=WB.color; WB.ctx.globalAlpha=1;
+      WB.ctx.fillText(n.value,parseInt(n.style.left),parseInt(n.style.top)+sz*.85);
+      wbSaveH();
+    }
+    n.style.display='none'; n.value='';
+  }
+}
+
+function wbSaveH(){
+  WB.hist.push(WB.ctx.getImageData(0,0,WB.cvs.width,WB.cvs.height));
+  if(WB.hist.length>50) WB.hist.shift();
+  WB.fut=[];
+}
+function wbUndo(){if(WB.hist.length<=1) return;WB.fut.push(WB.hist.pop());WB.ctx.putImageData(WB.hist[WB.hist.length-1],0,0);}
+function wbRedo(){if(!WB.fut.length) return;const s=WB.fut.pop();WB.hist.push(s);WB.ctx.putImageData(s,0,0);}
+function wbClear(){WB.ctx.fillStyle='#0c0c0c';WB.ctx.fillRect(0,0,WB.cvs.width,WB.cvs.height);wbSaveH();}
+function wbDL(){const a=document.createElement('a');a.download=`board-${toDS()}.png`;a.href=WB.cvs.toDataURL();a.click();}
+function wbTool(t,btn){
+  WB.tool=t;
+  document.querySelectorAll('.wib[id^=wtool-]').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  if(WB.cvs) WB.cvs.style.cursor=t==='text'?'text':t==='eraser'?'cell':'crosshair';
+}
+function wbSize(s,btn){WB.sz=s;document.querySelectorAll('.wsz').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+function wbColor(c,dot){WB.color=c;document.querySelectorAll('.cdot').forEach(d=>d.classList.remove('active'));dot.classList.add('active');}
+
+document.querySelectorAll('.mtab')[2].addEventListener('click',()=>{
+  setTimeout(()=>{if(!WB.ctx)wbInit();else wbResize();},80);
+});
+</script>
+</body>
+</html>

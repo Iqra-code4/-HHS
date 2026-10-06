@@ -1,0 +1,67 @@
+*{
+    
+    color: rgb(228, 228, 228);
+    text-decoration: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    background : linear-gradient( to left, #000000, #585858, rgb(75, 75, 75), #000000 );
+}
+
+input::placeholder{
+    color: rgb(174, 174, 174);
+}
+
+input{
+    background-color: rgb(78, 78, 78);
+    border: 2px solid rgb(45, 45, 45);
+    border-radius: 4px;
+    margin: 5px;
+    margin-bottom: 15px;
+}
+
+.parah{
+    display: flex;
+    justify-content: center;
+}
+
+h1{
+    font-size: 40px;
+}
+
+h1, h3{
+    margin: 10px;
+}
+
+h2{
+    margin-top: -5px;
+    margin-bottom: 18px;
+}
+
+#welcomeParah{
+    margin: 10px;
+    margin-top: 25px;
+    margin-bottom: 60px;
+}
+
+@media (min-width : 700px) and (max-width : 2500px){
+    *{
+        font-size: 1.25rem;
+    }
+}
+
+#forremember01{
+    margin: 20px;
+    margin-right: 8px;
+}
+
+a{
+    cursor: pointer;
+}
+
+pre{
+    margin: 8px;
+    margin-bottom: 35px;
+}

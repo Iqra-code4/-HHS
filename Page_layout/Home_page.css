@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: rgb(255, 255, 255);
+    font-family: monospace;
+    text-decoration: none;
+}
+
+body{
+    background : linear-gradient(to right, #000000, #ffffff);
+}
+
+h1{
+    margin: 20px;
+    margin-top: 100px;
+    font-size: 82px;
+    color: #000000;
+}
+
+.accBtn{
+    cursor: pointer;
+    padding: 7px;
+    background-color: rgb(94, 91, 91);
+    border: 2px solid rgb(67, 67, 67);
+    border-radius: 10px;
+    margin-top: 110px;
+    margin-bottom: 20px;
+}
+
+.accBtn:hover{
+    color: #bcbaba;
+}
+
+.organizations, .employees{
+    height: 350px;
+    width: 300px;
+    display: inline-block;
+    margin: 30px;
+    margin-top: 100px;
+    border-radius: 20px;
+    background-color: rgb(71, 71, 71);
+    padding: 15px;
+    text-align: center;
+}
+
+.starAI{
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    right: 0;
+    margin: 15px;
+    background-color: rgb(75, 75, 75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 550;
+    font-size: 13px;
+    font-family: 'Lucida Sans';
+    border-radius: 50%;
+    border-bottom-left-radius: 5px;
+}
+
+.footr{
+    width: 100vw;
+    height: 300px;
+    margin-top: 60px;
+    font-size: 20px;
+    padding-left: 8px;
+    padding-top: 5px;
+    font-weight: 550;
+}
+
+.ftrObj{
+    display: block;
+    margin: 10px 0 10px 30px;
+}
+
+#frstObj{
+    margin-top: 70px;
+}
+
+.ourSer{
+    height: 290px;
+    width: 250px;
+    background-color: #4c4c4c;
+    display: inline-block;
+    margin: 40px;
+    margin-right: auto;
+    margin-top: 120px;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+}
+
+a:hover{
+    color: #999999;
+}
+
+@media (min-width : 0px) and (max-width : 750px){
+    h1{
+        font-size: 52px;
+    }
+}
+
+@media (min-width : 300px) and (max-width : 550px){
+    h1{
+        font-size: 42px;
+    }
+} 

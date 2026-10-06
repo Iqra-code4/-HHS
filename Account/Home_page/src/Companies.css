@@ -1,0 +1,893 @@
+:root {
+  --bg:#000000;
+  --s1:#000000;
+  --s2:#232323aa;
+  --s3:#4b4b4b;
+  --s4:#575757;
+  --s5:#505050;
+  --white:#ffffff;
+  --t1:#edf2ff;
+  --t2:rgb(255, 255, 255);
+  --t3:#ffffff;
+  --t4:#ffffff;
+  --border:#555555;
+  --border2:#535353;
+  --border3:#555556;
+  --green:#64fba6;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+* {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  margin:0;
+  min-height:100vh;
+  font-family:'Outfit', sans-serif;
+  color: white !important;
+  background: rgb(0, 0, 0);
+}
+
+body::after {
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+}
+
+img, svg {
+  display:block;
+}
+
+a { text-decoration:none; color:inherit; }
+
+button { font:inherit; }
+
+.companies-page {
+  min-height:100vh;
+}
+
+.hero {
+  position:relative;
+  padding:7rem clamp(1.5rem, 6vw, 5rem);
+  overflow:hidden;
+}
+
+.hero-grid {
+  position:absolute;
+  inset:0;
+  background-image:linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 20%),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 0%, transparent 12%);
+}
+
+.hero-glow-1,
+.hero-glow-2 {
+  position:absolute;
+  border-radius:50%;
+  filter:blur(120px);
+  opacity:0.5;
+}
+
+.hero-glow-1 {
+  width:400px;
+  height:400px;
+  background:rgba(82,195,255,0.14);
+  top:-10%;
+  right:-10%;
+}
+
+.hero-glow-2 {
+  width:260px;
+  height:260px;
+  background:rgb(60, 60, 60);
+  bottom:10%;
+  left:-5%;
+}
+
+.hero-content {
+  position:relative;
+  z-index:1;
+  max-width:1100px;
+  margin:0 auto;
+}
+
+.hero-eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:0.75rem;
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.2em;
+  color: white;
+  border: 1px solid white;
+}
+
+.hero-eyebrow-dot {
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:linear-gradient(180deg, var(--green), #38b593);
+}
+
+.hero-title {
+  margin:1.4rem 0 0;
+  line-height:0.9;
+  font-family:'Bebas Neue', sans-serif;
+  font-size:clamp(3rem, 5vw, 5.75rem);
+  letter-spacing:0.05em;
+  color:var(--white);
+}
+
+.line-outline {
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255, 255, 255, 0.784);
+}
+
+.line-accent {
+  color:var(--white);
+}
+
+.hero-body {
+  display:grid;
+  grid-template-columns:1.4fr 0.8fr;
+  gap:3rem;
+  align-items:start;
+  margin-top:2rem;
+}
+
+.hero-desc {
+  max-width:620px;
+  font-size:1rem;
+  line-height:1.85;
+  color:var(--t2);
+}
+
+.hero-cta {
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin-top:2rem;
+}
+
+.btn-white,
+.btn-ghost-dark {
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  padding:1rem 1.4rem;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.12);
+  font-size:0.88rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  transition:all 0.2s;
+}
+
+.btn-white {
+  background:var(--white);
+  color:var(--bg);
+}
+
+.btn-white:hover,
+.btn-ghost-dark:hover {
+  transform:translateY(-1px);
+}
+
+.btn-ghost-dark {
+  background:transparent;
+  color:var(--t1);
+}
+
+.hero-stats {
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:1rem;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:24px;
+  padding:1.5rem;
+}
+
+.hero-stat {
+  display:flex;
+  flex-direction:column;
+  gap:0.4rem;
+  background-color: transparent;
+}
+
+.stat-num {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:2.3rem;
+  color:var(--white);
+}
+
+.stat-lbl {
+  font-size:0.8rem;
+  color: white;
+  text-transform:uppercase;
+  letter-spacing:0.12em;
+}
+
+.section-inner {
+  max-width:1200px;
+  margin:0 auto;
+  padding:4rem clamp(1.5rem, 6vw, 5rem);
+  background-color: #020616;
+}
+
+.section-tag {
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.2em;
+  color:var(--green);
+  margin-bottom:1rem;
+}
+
+.section-title {
+  margin:0;
+  line-height:0.95;
+  font-family:'Bebas Neue', sans-serif;
+  font-size:clamp(2.2rem, 4vw, 4rem);
+  color:var(--white);
+}
+
+.section-desc {
+  max-width:680px;
+  color: white;
+  font-size:0.98rem;
+  line-height:1.85;
+}
+
+.services-header,
+.companies-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:2rem;
+  color: #fffefe;
+}
+
+.services-grid,
+.testimonials-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+  margin-top:2.5rem;
+  background-color: transparent;
+  border: none;
+}
+
+.service-card,
+.testimonial-card,
+.pricing-card,
+.process-step {
+  background: black;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:20px;
+  padding:2rem;
+}
+
+.service-card {
+  min-height:420px;
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
+}
+
+.service-num {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:4rem;
+  color: white;
+
+}
+
+.service-icon {
+  width:52px;
+  height:52px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  background:rgba(255, 255, 255, 0.126);
+  color:var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.492);
+  box-shadow: none;
+}
+
+.service-title {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:1.35rem;
+  color:var(--white);
+}
+
+.service-desc {
+  color: white;
+  line-height:1.75;
+  font-size:0.95rem;
+}
+
+.service-tags {
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.6rem;
+}
+
+.s-tag {
+  padding:0.55rem 0.85rem;
+  border-radius:999px;
+  background:rgba(255,255,255,0.05);
+  color: white;
+  font-size:0.75rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.service-card:hover .s-tag {
+  background:rgba(255,255,255,0.1);
+  color:var(--white);
+  border-color:rgba(255,255,255,0.16);
+}
+
+.service-card:hover .service-icon {
+  background:rgba(255,255,255,0.18);
+  color:var(--white);
+  border-color:rgba(255,255,255,0.24);
+  box-shadow: none;
+}
+
+.service-card:hover{
+    background-color: transparent;
+    border: none;
+}
+
+.filter-row {
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.75rem;
+  margin-top:2rem;
+}
+
+.filter-btn {
+  padding:0.85rem 1.25rem;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.03);
+  color:var(--t3);
+  font-size:0.85rem;
+  letter-spacing:0.08em;
+  cursor:pointer;
+  transition:all 0.2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background:rgba(255,255,255,0.1);
+  color:var(--white);
+  border-color:rgba(255,255,255,0.18);
+}
+
+.company-list {
+  display:grid;
+  gap:1rem;
+  margin-top:1.5rem;
+  background-color: transparent;
+}
+
+.company-row {
+  display:grid;
+  grid-template-columns:48px 1fr auto auto auto;
+  gap:1rem;
+  align-items:center;
+  padding:1.4rem 1.6rem;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:18px;
+  background: black;
+}
+
+.company-logo-box {
+  width:48px;
+  height:48px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,0.08);
+  font-weight:800;
+  color:var(--white);
+}
+
+.company-name {
+  font-size:1.08rem;
+  font-weight:700;
+  color:var(--white);
+}
+
+.company-sub {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:0.5rem;
+  font-size:0.8rem;
+  color:var(--t4);
+}
+
+.company-sub-dot {
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:var(--t4);
+}
+
+.company-badge {
+  justify-self:start;
+  padding:0.65rem 0.95rem;
+  border-radius:999px;
+  font-size:0.75rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+}
+
+.badge-hiring { background:rgba(100,251,166,0.14); color:var(--green); }
+.badge-featured { background:rgba(255,255,255,0.08); color: white; }
+.badge-partner { background:rgba(77,107,177,0.16); color: white; }
+
+.company-jobs {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:1.75rem;
+  color:var(--white);
+}
+
+.company-jobs-lbl {
+  font-size:0.75rem;
+  color: white;
+  text-transform:uppercase;
+  letter-spacing:0.12em;
+}
+
+.company-arrow {
+  color: white;
+}
+
+.pricing-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+  margin-top:2.5rem;
+}
+
+.pricing-card {
+  background: black;
+  padding:2.5rem 2rem;
+  position:relative;
+  overflow:hidden;
+  transition:background 0.25s;
+}
+
+.pricing-card.featured { background: rgba(55, 55, 55, 0.441); }
+
+.pricing-card-top {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:2px;
+  background:transparent;
+}
+
+.pricing-card.featured .pricing-card-top { background:var(--white); }
+
+.pricing-tier {
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--t4);
+  margin-bottom:1.25rem;
+}
+
+.pricing-card.featured .pricing-tier { color:var(--t2); }
+
+.pricing-price {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:3.5rem;
+  color:var(--white);
+  letter-spacing:0.02em;
+  line-height:1;
+  margin-bottom:0.25rem;
+}
+
+.pricing-period {
+  font-size:12px;
+  color:var(--t4);
+  margin-bottom:1.75rem;
+}
+
+.pricing-divider {
+  height:1px;
+  background:var(--border);
+  margin-bottom:1.75rem;
+}
+
+.pricing-features {
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding:0;
+  margin:0;
+}
+
+.pricing-feature {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:13px;
+  color:var(--t2);
+}
+
+.pricing-feature .check { color:var(--green); flex-shrink:0; }
+.pricing-feature .dash  { color:var(--t4); flex-shrink:0; }
+
+.pricing-btn {
+  width:100%;
+  margin-top:2rem;
+  padding:13px;
+  border-radius:8px;
+  border:none;
+  cursor:pointer;
+  font-family:'Outfit', sans-serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  transition:all 0.2s;
+}
+
+.pricing-btn-outline {
+  background:transparent;
+  color:var(--t3);
+  border:1px solid rgba(255,255,255,0.16);
+}
+
+.pricing-btn-outline:hover { color:var(--t1); border-color:rgba(255,255,255,0.24); background:rgba(255,255,255,0.05); }
+
+.pricing-btn-solid {
+  background:var(--white);
+  color:var(--bg);
+}
+
+.pricing-btn-solid:hover { background:#e0e0e0; transform:translateY(-2px); }
+
+.process-section { background:var(--bg); }
+
+.process-steps {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  margin-top:3.5rem;
+}
+
+.process-step {
+  background:var(--s1);
+  padding:2rem 1.75rem;
+  position:relative;
+  transition:background 0.2s;
+}
+
+.process-step:hover { background:var(--s2); }
+
+.step-num {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:4.5rem;
+  color:var(--s3);
+  line-height:1;
+  margin-bottom:1rem;
+  transition:color 0.2s;
+}
+
+.process-step:hover .step-num { color:var(--s5); }
+
+.step-title {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:1.3rem;
+  letter-spacing:0.04em;
+  color:var(--white);
+  margin-bottom:0.5rem;
+}
+
+.step-desc {
+  font-size:12px;
+  color:var(--t4);
+  line-height:1.65;
+}
+
+.step-connector {
+  position:absolute;
+  right:0;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--s5);
+  font-size:18px;
+}
+
+.process-step:last-child .step-connector { display:none; }
+
+.testimonials-section { background:var(--s1); }
+
+.testimonials-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  margin-top:3.5rem;
+}
+
+.testimonial-card {
+  background:var(--s1);
+  padding:2rem;
+  transition:background 0.2s;
+  position:relative;
+}
+
+.testimonial-card:hover { background:var(--s2); }
+
+.testimonial-quote {
+  font-size:2.5rem;
+  color:var(--s4);
+  font-family:'Bebas Neue', sans-serif;
+  line-height:1;
+  margin-bottom:1rem;
+  transition:color 0.2s;
+}
+
+.testimonial-card:hover .testimonial-quote { color:var(--s5); }
+
+.testimonial-text {
+  font-size:13px;
+  color:var(--t2);
+  line-height:1.75;
+  margin-bottom:1.5rem;
+  font-style:italic;
+}
+
+.testimonial-author {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding-top:1rem;
+}
+
+.t-avatar {
+  width:36px;
+  height:36px;
+  border-radius:9px;
+  background:var(--s4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:700;
+  color:var(--t2);
+  border:1px solid rgba(255,255,255,0.08);
+  flex-shrink:0;
+}
+
+.t-name { font-size:13px; font-weight:700; color:var(--white); }
+.t-role { font-size:10px; color:var(--t4); margin-top:1px; }
+
+.t-stars { color:var(--t3); font-size:11px; letter-spacing:2px; margin-left:auto; }
+
+.cta-section {
+  background:var(--bg);
+  padding:5rem clamp(1.5rem, 6vw, 5rem);
+}
+
+.cta-inner {
+  max-width:1200px;
+  margin:0 auto;
+  background:var(--s2);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:20px;
+  padding:clamp(2.5rem, 5vw, 4rem);
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:2rem;
+  align-items:center;
+}
+
+.cta-inner::before {
+  content:'HIRE';
+  position:absolute;
+  font-family:'Bebas Neue', sans-serif;
+  font-size:14rem;
+  color:rgba(255,255,255,0.02);
+  right:-2rem;
+  bottom:-2rem;
+  line-height:1;
+  pointer-events:none;
+  -webkit-user-select:none;
+  user-select:none;
+}
+
+.cta-title {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:clamp(2rem, 4vw, 3.5rem);
+  line-height:0.95;
+  letter-spacing:0.02em;
+  color:var(--white);
+}
+
+.cta-sub {
+  font-size:14px;
+  color:var(--t3);
+  margin-top:0.75rem;
+  max-width:500px;
+  line-height:1.65;
+}
+
+.cta-actions {
+  display:flex;
+  gap:10px;
+  flex-direction:column;
+  align-items:flex-end;
+}
+
+footer {
+  background:var(--s1);
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding:2.5rem clamp(1.5rem, 6vw, 5rem);
+}
+
+.footer-inner {
+  max-width:1200px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:1rem;
+}
+
+.footer-copy { font-size:12px; color:var(--t4); }
+
+.footer-links { display:flex; gap:20px; }
+
+.footer-link {
+  font-size:12px;
+  color:var(--t4);
+  text-decoration:none;
+  transition:color 0.2s;
+}
+
+.footer-link:hover { color:var(--t2); }
+
+.reveal {
+  opacity:0;
+  transform:translateY(32px);
+  transition:opacity 0.65s cubic-bezier(.16,1,.3,1), transform 0.65s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+.reveal-delay-1 { transition-delay:0.08s; }
+.reveal-delay-2 { transition-delay:0.16s; }
+.reveal-delay-3 { transition-delay:0.24s; }
+.reveal-delay-4 { transition-delay:0.32s; }
+.reveal-delay-5 { transition-delay:0.40s; }
+.reveal-delay-6 { transition-delay:0.48s; }
+
+@media(max-width:1024px) {
+  .services-grid { grid-template-columns:repeat(2,1fr); }
+  .pricing-grid  { grid-template-columns:1fr; max-width:420px; margin:0 auto; }
+  .process-steps { grid-template-columns:repeat(2,1fr); }
+  .testimonials-grid { grid-template-columns:repeat(2,1fr); }
+  .company-row { grid-template-columns:48px 1fr auto; }
+  .company-jobs, .company-jobs-lbl, .company-arrow { display:none; }
+}
+
+@media(max-width:768px) {
+  .nav-links { display:none; }
+  .nav-burger { display:flex; }
+  .hero-body { grid-template-columns:1fr; gap:2rem; }
+  .hero-stats { grid-template-columns:repeat(3,1fr); }
+  .services-grid { grid-template-columns:1fr; }
+  .process-steps { grid-template-columns:1fr; }
+  .testimonials-grid { grid-template-columns:1fr; }
+  .cta-inner { grid-template-columns:1fr; }
+  .cta-actions { align-items:flex-start; flex-direction:row; flex-wrap:wrap; }
+  .companies-header { flex-direction:column; align-items:flex-start; }
+}
+
+@media(max-width:480px) {
+  .hero-stats { grid-template-columns:1fr; }
+  .hero-cta { flex-direction:column; }
+  .btn-white, .btn-ghost-dark { width:100%; justify-content:center; }
+}
+
+@media (max-width: 992px) {
+  .company-row {
+    grid-template-columns:50px 1fr auto auto;
+    gap:1rem;
+    padding:1.1rem 1.4rem;
+  }
+
+  .company-arrow {
+    display:none;
+  }
+}
+
+@media (max-width:768px) {
+  .companies-header {
+    flex-direction:column;
+    gap:1rem;
+    align-items:flex-start;
+  }
+
+  .section-desc {
+    text-align:left !important;
+  }
+
+  .filter-row {
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  .company-row {
+    grid-template-columns:50px 1fr auto;
+  }
+
+  .company-badge {
+    display:none;
+  }
+}
+
+@media (max-width:576px) {
+  .company-row {
+    grid-template-columns:45px 1fr;
+    grid-template-rows:auto auto;
+    gap:10px;
+    padding:1rem 1.2rem;
+  }
+
+  .company-logo-box {
+    width:42px;
+    height:42px;
+    font-size:11px;
+  }
+
+  .company-name {
+    font-size:1.05rem;
+  }
+
+  .company-sub {
+    font-size:10px;
+  }
+
+  .company-jobs {
+    font-size:1.2rem;
+  }
+
+  .company-jobs-lbl {
+    font-size:8px;
+  }
+
+  .company-row > div:last-child {
+    display:none;
+  }
+}

@@ -1,0 +1,70 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--s1:#0d0d0d;--s2:#111;--s3:#161616;--s4:#1a1a1a;--s5:#222;--s6:#2a2a2a;
+  --b1:#1c1c1c;--b2:#252525;--b3:#333;--b4:#3e3e3e;
+  --tx:#f5f5f5;--tx2:#c8c8c8;--tx3:#888;--tx4:#555;--tx5:#333;
+  --green:#3ddc84;--red:#ff4545;--yellow:#f5c542;--blue:#4da6ff;
+  --fd:'Bebas Neue',sans-serif;--fb:'Outfit',sans-serif;
+}
+html,body{min-height:100vh;background:var(--bg);font-family:var(--fb);color:var(--tx);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:var(--s1)}
+::-webkit-scrollbar-thumb{background:var(--s6);border-radius:2px}
+input,textarea,select{font-family:var(--fb);outline:none}
+input::placeholder,textarea::placeholder{color:var(--tx5)}
+select option{background:var(--s4)}
+
+/* ── Atmosphere ── */
+.noise{pointer-events:none;position:fixed;inset:0;z-index:0;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px}
+.dots{pointer-events:none;position:fixed;inset:0;z-index:0;opacity:.035;
+  background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:28px 28px}
+
+/* ── Animations ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+@keyframes slideRight{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 rgba(61,220,132,0)}50%{box-shadow:0 0 30px rgba(61,220,132,.18)}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+@keyframes countUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{opacity:.3}50%{opacity:.7}100%{opacity:.3}}
+
+/* ── Utility ── */
+.fadeUp{animation:fadeUp .45s ease both}
+.scaleIn{animation:scaleIn .3s ease both}
+.card-hover{transition:border-color .2s,transform .22s cubic-bezier(.34,1.2,.64,1),box-shadow .2s}
+.card-hover:hover{border-color:var(--b3)!important;transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.btn-base{cursor:pointer;border:none;font-family:var(--fb);font-weight:700;letter-spacing:.3px;transition:all .18s;display:inline-flex;align-items:center;gap:6px}
+.btn-base:active{transform:scale(.96)}
+.tag{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px;letter-spacing:.3px}
+
+/* ── Marquee ── */
+.marquee-wrap{overflow:hidden;border-top:1px solid var(--b1);border-bottom:1px solid var(--b1);background:var(--s1);padding:10px 0}
+.marquee-inner{display:flex;gap:0;width:max-content;animation:ticker 28s linear infinite}
+.marquee-inner:hover{animation-play-state:paused}
+
+/* ── Modal overlay ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto;backdrop-filter:blur(6px);animation:fadeIn .2s ease}
+.modal-box{background:var(--s1);border:1px solid var(--b2);border-radius:18px;width:100%;max-width:780px;animation:slideUp .3s ease;position:relative;flex-shrink:0}
+
+/* ── Form elements ── */
+.f-inp{background:var(--s4);border:1px solid var(--b2);border-radius:10px;padding:10px 14px;color:var(--tx);font-size:13px;width:100%;transition:border-color .2s}
+.f-inp:focus{border-color:var(--green)}
+.f-ta{background:var(--s4);border:1px solid var(--b2);border-radius:10px;padding:10px 14px;color:var(--tx);font-size:13px;width:100%;resize:vertical;line-height:1.7;transition:border-color .2s}
+.f-ta:focus{border-color:var(--green)}
+.f-sel{background:var(--s4);border:1px solid var(--b2);border-radius:10px;padding:10px 14px;color:var(--tx);font-size:13px;width:100%;cursor:pointer}
+
+/* ── Progress bar ── */
+.prog-track{height:5px;background:var(--s5);border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;border-radius:3px;transition:width .5s cubic-bezier(.34,1,.64,1)}
+
+/* ── Toast ── */
+.toast{position:fixed;bottom:28px;right:28px;z-index:300;background:var(--s2);border:1px solid var(--b3);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 16px 48px rgba(0,0,0,.6);animation:slideUp .3s ease}
+
+/* ── Responsive ── */
+@media(max-width:1000px){.three-col{grid-template-columns:1fr 1fr!important}}
+@media(max-width:680px){.three-col{grid-template-columns:1fr!important}.hero-title{font-size:42px!important}.stats-row{grid-template-columns:1fr 1fr!important}.nav-right span{display:none!important}}

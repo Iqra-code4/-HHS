@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>HHS — For Candidates</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="Candidates.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════ -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">HHS</div>
+    <span class="nav-logo-text">Hire and Hired Stars</span>
+  </a>
+  <div class="nav-links">
+    <a href="#" class="nav-link">About</a>
+    <a href="#" class="nav-link">Companies</a>
+    <a href="#" class="nav-link active">Candidates</a>
+    <a href="#" class="nav-link">Services</a>
+    <a href="#" class="nav-btn">Create Profile</a>
+  </div>
+  <button class="nav-burger" onclick="toggleMenu()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" class="nav-link">About</a>
+  <a href="#" class="nav-link">Companies</a>
+  <a href="#" class="nav-link active">Candidates</a>
+  <a href="#" class="nav-link">Services</a>
+  <a href="#" class="nav-link" style="background:var(--s4);color:var(--white);margin-top:6px">Create Profile</a>
+</div>
+
+<!-- ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow glow-a"></div>
+  <div class="hero-glow glow-b"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal">
+      <span class="eyebrow-dot"></span>
+      For Candidates &amp; Students
+    </div>
+
+    <h1 class="hero-title reveal d1">
+      <span class="line-outline">LAUNCH YOUR</span><br>
+      <span class="line-solid">CAREER</span><br>
+      <span class="line-outline">WITHOUT LIMITS.</span>
+    </h1>
+
+    <div class="hero-body">
+      <div>
+        <p class="hero-desc reveal d2">
+          Whether you're a fresh graduate or a seasoned professional, Hire and Hired Stars gives you every tool, connection, and resource to land the role you deserve — faster.
+        </p>
+        <div class="hero-cta reveal d3">
+          <a href="#candidates" class="btn-white">
+            Explore Talent
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#services" class="btn-ghost">Our Services</a>
+        </div>
+      </div>
+
+      <div class="hero-stats reveal d3">
+        <div class="hero-stat">
+          <div class="stat-num" data-target="200" data-suffix="K+">200K+</div>
+          <div class="stat-lbl">Candidates</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-num" data-target="13" data-suffix="D">13D</div>
+          <div class="stat-lbl">Avg. Hire Time</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-num" data-target="96" data-suffix="%">96%</div>
+          <div class="stat-lbl">Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+   MARQUEE
+══════════════════════════════════════ -->
+<div class="marquee-strip">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<!-- ══════════════════════════════════════
+   SERVICES / ADVANTAGES
+══════════════════════════════════════ -->
+<section class="services-section" id="services">
+  <div class="section-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-tag reveal">What We Offer</div>
+        <h2 class="section-title reveal d1">ADVANTAGES FOR<br>CANDIDATES</h2>
+      </div>
+      <p class="section-desc reveal d2" style="margin-top:0">
+        Everything a modern job seeker needs — AI-matching, resume tools, mentorship, and direct access to top employers worldwide.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <span class="service-num">01</span>
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="service-title">Groups</div>
+        <p class="service-desc">Students are placed in small accountability groups where they : Learn together, Build projects together and Practice interviews to surface your top matches. This reduces isolation, laziness and increases consistency plus completion rates - no endless scrolling.</p>
+        <div class="service-tags"><span class="s-tag">Skilled people</span><span class="s-tag">Personalised</span><span class="s-tag">Real-Time</span></div>
+      </div>
+
+      <div class="service-card reveal d1">
+        <span class="service-num">02</span>
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="service-title">Resume Builder</div>
+        <p class="service-desc">Create an ATS-optimised, visually stunning resume in minutes. Our builder adapts in real-time with AI suggestions for every role you target.</p>
+        <div class="service-tags"><span class="s-tag">ATS-Ready</span><span class="s-tag">40+ Templates</span><span class="s-tag">AI Suggestions</span></div>
+      </div>
+
+      <div class="service-card reveal d2">
+        <span class="service-num">03</span>
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="service-title">Mentorship Network</div>
+        <p class="service-desc">Connect with 5,000+ industry mentors across engineering, design, finance, and more. Book 1-on-1 sessions to accelerate your career growth.</p>
+        <div class="service-tags"><span class="s-tag">5K+ Mentors</span><span class="s-tag">1-on-1 Sessions</span><span class="s-tag">Free Tier</span></div>
+      </div>
+
+      <div class="service-card reveal d1">
+        <span class="service-num">04</span>
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="service-title">Interview Prep</div>
+        <p class="service-desc">Practise with AI mock interviews tailored to your target role. Get instant feedback on answers, body language scores, and filler-word tracking.</p>
+        <div class="service-tags"><span class="s-tag">AI Mock Calls</span><span class="s-tag">Role-Specific</span><span class="s-tag">Video Analysis</span></div>
+      </div>
+
+      <div class="service-card reveal d2">
+        <span class="service-num">05</span>
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="service-title">Opportunities</div>
+        <p class="service-desc">Top-performing students get opportunities to:
+            Work on real platform project, Gain real-world experience, and build production-level applications
+            So instead of waiting for internships…
+            They build experience by the tasks and projects, which we will give them.
+          </p>
+        <div class="service-tags"><span class="s-tag">Live Data</span><span class="s-tag">By Role & City</span><span class="s-tag">Equity Insights</span></div>
+      </div>
+
+      <div class="service-card reveal d3">
+        <span class="service-num">06</span>
+        <div class="service-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="service-title">Rewards</div>
+        <p class="service-desc">We will give them tasks, if they will complete it, they will receive prizes, certificates, So then can add it in their resume. Then they will receive a verified skill profile, showing their real capability level (Beginner, Intermediate, Job-Ready).
+            This makes their profile stronger than a normal CV.</p>
+        <div class="service-tags"><span class="s-tag">Prices</span><span class="s-tag">Certificates</span><span class="s-tag">Ranks</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+   CANDIDATES LIST
+══════════════════════════════════════ -->
+<section class="candidates-section" id="candidates">
+  <div class="section-inner">
+    <div class="candidates-header">
+      <div>
+        <div class="section-tag reveal">Talent Showcase</div>
+        <h2 class="section-title reveal d1">TOP CANDIDATES<br>&amp; STUDENTS</h2>
+      </div>
+      <p class="section-desc reveal d2" style="margin-top:0;text-align:right">
+        Discover pre-vetted professionals ready for their next challenge.
+      </p>
+    </div>
+
+    <!-- Search + Filters -->
+    <div class="search-filter-bar reveal">
+      <div class="search-wrap">
+        <span class="search-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </span>
+        <input class="search-input" id="searchInput" type="text" placeholder="Search by name, skill, or role…" oninput="handleSearch()" />
+      </div>
+    </div>
+
+    <div class="filter-row reveal d1" id="filterRow">
+      <button class="filter-btn active" onclick="filterCandidates('all',this)">All</button>
+      <button class="filter-btn" onclick="filterCandidates('engineering',this)">Engineering</button>
+      <button class="filter-btn" onclick="filterCandidates('design',this)">Design</button>
+      <button class="filter-btn" onclick="filterCandidates('product',this)">Product</button>
+      <button class="filter-btn" onclick="filterCandidates('data',this)">Data &amp; AI</button>
+      <button class="filter-btn" onclick="filterCandidates('marketing',this)">Marketing</button>
+      <button class="filter-btn" onclick="filterCandidates('finance',this)">Finance</button>
+    </div>
+
+    <!-- Grid -->
+    <div class="candidates-grid reveal" id="candidatesGrid"></div>
+
+    <div class="load-more-wrap reveal">
+      <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">Load More Candidates</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+   PROCESS STEPS
+══════════════════════════════════════ -->
+<section class="process-section">
+  <div class="section-inner">
+    <div class="section-tag reveal">How It Works</div>
+    <h2 class="section-title reveal d1">YOUR PATH FROM<br>PROFILE TO OFFER</h2>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Build Your Profile</div>
+        <p class="step-desc">Create a rich, ATS-optimised profile in under 10 minutes. Add skills, experience, portfolio, and your dream roles.</p>
+        <span class="step-arrow">→</span>
+      </div>
+      <div class="process-step reveal d1">
+        <div class="step-num">02</div>
+        <div class="step-title">Get Matched</div>
+        <p class="step-desc">Our AI surfaces your top-matched jobs daily. You'll receive ranked listings with salary insights and culture-fit scores.</p>
+        <span class="step-arrow">→</span>
+      </div>
+      <div class="process-step reveal d2">
+        <div class="step-num">03</div>
+        <div class="step-title">Apply &amp; Prepare</div>
+        <p class="step-desc">One-click apply to any role. Prepare for your job by mock interviews, projects and tasks from us.</p>
+        <span class="step-arrow">→</span>
+      </div>
+      <div class="process-step reveal d3">
+        <div class="step-num">04</div>
+        <div class="step-title">Land the Job</div>
+        <p class="step-desc">Receive offers, negotiate with data-backed salary guidance, and onboard smoothly — all within HHS.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+   CAREER RESOURCES
+══════════════════════════════════════ -->
+<section class="resources-section">
+  <div class="section-inner">
+    <div class="section-tag reveal">Career Resources</div>
+    <h2 class="section-title reveal d1">EVERYTHING YOU NEED<br>TO SUCCEED</h2>
+
+    <div class="resources-grid">
+
+      <div class="resource-card reveal d1">
+        <div class="bg-number">01</div>
+        <div class="resource-tag">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Resume Lab
+        </div>
+        <div class="resource-icon-lg">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="resource-title">Resume &amp; Cover Letter Lab</div>
+        <p class="resource-desc">40+ professional templates, AI-powered content suggestions, and real-time ATS scoring so your application always gets through.</p>
+        <ul class="resource-list">
+          <li><span class="r-check">✓</span> ATS keyword optimiser</li>
+          <li><span class="r-check">✓</span> Tailored cover letter AI</li>
+          <li><span class="r-check">✓</span> LinkedIn profile sync</li>
+          <li><span class="r-check">✓</span> Export to PDF / DOCX</li>
+        </ul>
+      </div>
+
+      <div class="resource-card reveal d2">
+        <div class="bg-number">02</div>
+        <div class="resource-tag">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          Interview Prep
+        </div>
+        <div class="resource-icon-lg">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <div class="resource-title">AI Interview Simulator</div>
+        <p class="resource-desc">Role-specific mock interviews powered by AI. Record video responses, get scored on content, clarity, and confidence in seconds.</p>
+        <ul class="resource-list">
+          <li><span class="r-check">✓</span> 1,000+ question bank</li>
+          <li><span class="r-check">✓</span> Video &amp; tone analysis</li>
+          <li><span class="r-check">✓</span> STAR method coaching</li>
+          <li><span class="r-check">✓</span> Instant scorecard</li>
+        </ul>
+      </div>
+
+      <div class="resource-card wide featured reveal d1">
+        <div class="bg-number">03</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center">
+          <div>
+            <div class="resource-tag">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              Skill Accelerator
+            </div>
+            <div class="resource-icon-lg">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="resource-title">Skill Accelerator<br>Program</div>
+            <p class="resource-desc">500+ micro-courses, certification paths, and weekly live workshops taught by industry practitioners. Earn badges employers actually recognise.</p>
+          </div>
+          <div>
+            <ul class="resource-list" style="margin-top:0">
+              <li><span class="r-check">✓</span> 500+ curated courses</li>
+              <li><span class="r-check">✓</span> Live workshops weekly</li>
+              <li><span class="r-check">✓</span> Verified skill badges</li>
+              <li><span class="r-check">✓</span> Learning paths by role</li>
+              <li><span class="r-check">✓</span> Offline access (Pro)</li>
+              <li><span class="r-check">✓</span> Certificate of completion</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+   TESTIMONIALS
+══════════════════════════════════════ -->
+<section class="testimonials-section">
+  <div class="section-inner">
+    <div class="section-tag reveal">Success Stories</div>
+    <h2 class="section-title reveal d1">CANDIDATES WHO<br>MADE IT</h2>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card reveal">
+        <div class="t-quote">"</div>
+        <p class="t-text">I'd been applying blindly for 5 months. HHS's AI matched me to a senior role at Stripe within two weeks. The resume builder alone got me double the callbacks.</p>
+        <div class="t-author">
+          <div class="t-avatar">ZA</div>
+          <div>
+            <div class="t-name">Zara Ahmed</div>
+            <div class="t-role">Software Engineer · Stripe</div>
+          </div>
+          <div class="t-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal d1">
+        <div class="t-quote">"</div>
+        <p class="t-text">The mock interview feature is insane. I did 10 practice sessions and walked into Google completely prepared. Got the offer first try. Worth every penny.</p>
+        <div class="t-author">
+          <div class="t-avatar">KM</div>
+          <div>
+            <div class="t-name">Kai Morrison</div>
+            <div class="t-role">Product Manager · Google</div>
+          </div>
+          <div class="t-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal d2">
+        <div class="t-quote">"</div>
+        <p class="t-text">As a bootcamp grad, I was worried about competing. HHS showed me exactly which skills to build and connected me with a mentor who helped me pivot into UX Design.</p>
+        <div class="t-author">
+          <div class="t-avatar">PL</div>
+          <div>
+            <div class="t-name">Priya Lamba</div>
+            <div class="t-role">UX Designer · Airbnb</div>
+          </div>
+          <div class="t-stars">★★★★★</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+   PLANS
+══════════════════════════════════════ -->
+<section class="plans-section" id="plans">
+  <div class="section-inner">
+    <div class="section-tag reveal">Candidate Plans</div>
+    <h2 class="section-title reveal d1">FREE TO START,<br>PRO TO ACCELERATE</h2>
+
+    <div class="plans-grid">
+
+      <div class="plan-card reveal">
+        <div class="plan-top"></div>
+        <div class="plan-tier">Free</div>
+        <div class="plan-price">$0</div>
+        <div class="plan-period">forever · no credit card</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li class="plan-feature"><span class="p-check">✓</span> Public profile &amp; portfolio</li>
+          <li class="plan-feature"><span class="p-check">✓</span> 5 job applications / month</li>
+          <li class="plan-feature"><span class="p-check">✓</span> Basic AI job matching</li>
+          <li class="plan-feature"><span class="p-check">✓</span> 1 resume template</li>
+          <li class="plan-feature"><span class="p-dash">—</span> <span style="color:var(--t4)">Interview simulator</span></li>
+          <li class="plan-feature"><span class="p-dash">—</span> <span style="color:var(--t4)">Salary intelligence</span></li>
+          <li class="plan-feature"><span class="p-dash">—</span> <span style="color:var(--t4)">Mentor access</span></li>
+        </ul>
+        <button class="plan-btn plan-btn-outline">Get Started Free</button>
+      </div>
+
+      <div class="plan-card featured reveal d1">
+        <div class="plan-top"></div>
+        <div class="plan-tier" style="color:var(--t2)">
+          Pro
+          <span style="background:var(--white);color:var(--bg);font-size:9px;padding:2px 7px;border-radius:3px;margin-left:8px;font-weight:800;letter-spacing:.1em">POPULAR</span>
+        </div>
+        <div class="plan-price">$29</div>
+        <div class="plan-period">per month · cancel anytime</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li class="plan-feature"><span class="p-check">✓</span> Unlimited applications</li>
+          <li class="plan-feature"><span class="p-check">✓</span> Advanced AI job matching</li>
+          <li class="plan-feature"><span class="p-check">✓</span> 40+ resume templates</li>
+          <li class="plan-feature"><span class="p-check">✓</span> AI interview simulator</li>
+          <li class="plan-feature"><span class="p-check">✓</span> Full salary intelligence</li>
+          <li class="plan-feature"><span class="p-check">✓</span> Mentor network access</li>
+          <li class="plan-feature"><span class="p-dash">—</span> <span style="color:var(--t4)">Dedicated career coach</span></li>
+        </ul>
+        <button class="plan-btn plan-btn-solid">Start Free Trial</button>
+      </div>
+
+      <div class="plan-card reveal d2">
+        <div class="plan-top"></div>
+        <div class="plan-tier">Elite</div>
+        <div class="plan-price">$79</div>
+        <div class="plan-period">per month · billed monthly</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li class="plan-feature"><span class="p-check">✓</span> Everything in Pro</li>
+          <li class="plan-feature"><span class="p-check">✓</span> Dedicated career coach</li>
+          <li class="plan-feature"><span class="p-check">✓</span> Priority candidate listing</li>
+          <li class="plan-feature"><span class="p-check">✓</span> Direct recruiter intros</li>
+          <li class="plan-feature"><span class="p-check">✓</span> Offline course access</li>
+          <li class="plan-feature"><span class="p-check">✓</span> Negotiation playbook</li>
+          <li class="plan-feature"><span class="p-check">✓</span> 30-day job guarantee*</li>
+        </ul>
+        <button class="plan-btn plan-btn-outline">Go Elite</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+   CTA BANNER
+══════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <div>
+      <h2 class="cta-title">YOUR NEXT ROLE<br>IS ONE CLICK AWAY.</h2>
+      <p class="cta-sub">Join 200,000+ candidates already accelerating their careers on HHS. Create your free profile in under 5 minutes.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="#" class="btn-white">
+        Create Free Profile
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#plans" class="btn-ghost">View Plans</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-mark" style="width:29px;height:27px;font-size:13px">HHS</div>
+      <span class="footer-copy" style="color:var(--t3)">© 2026 Hire and Hired Stars. All rights reserved.</span>
+    </div>
+    <div class="footer-links">
+      <a href="#" class="footer-link">Privacy</a>
+      <a href="#" class="footer-link">Terms</a>
+      <a href="#" class="footer-link">Contact</a>
+      <a href="#" class="footer-link">Blog</a>
+    </div>
+  </div>
+</footer>
+
+<script src="Candidates.js"></script>
+</body>
+</html>
